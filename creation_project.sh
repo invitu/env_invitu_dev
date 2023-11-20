@@ -41,6 +41,24 @@ mkdir -p $Workspace
 
 case $branch_odoo in
 
+    "8.0")
+        echo "on va utiliser la version 8.0 de ODOO avec python 2.7.9"
+        ## on créé un dossier venv 2.7.9
+        cd $Workspace/../
+        pyenv virtualenv 2.7.9 $name_project
+        echo "Tu peux activer l'env de dev en faisant :"
+        echo "pyenv activate $name_project "
+    ;;
+
+    "9.0")
+        echo "on va utiliser la version 9.0 de ODOO avec python 2.7.9"
+        ## on créé un dossier venv 2.7.9
+        cd $Workspace/../
+        pyenv virtualenv 2.7.9 $name_project
+        echo "Tu peux activer l'env de dev en faisant :"
+        echo "pyenv activate $name_project "
+    ;;
+
     "10.0")
         echo "on va utiliser la version 10 de ODOO avec python 2.7.9"
         ## on créé un dossier venv 2.7.9
@@ -127,8 +145,8 @@ echo "on est dans le dossier $Workspace "
 # git clone --depth 1 --branch 15.0 https://github.com/odoo/odoo
 #######
 # link odoo
-# ln -sf ~/invitu-devel/odoo  odoo
-# link oca
+ln -sf ~/invitu-devel/odoo  odoo
+# link oca :: choisir et cloner les depots voulues
 # ln -sf ~/invitu-devel/oca oca
 
 #  CHECKOUT and PULL
