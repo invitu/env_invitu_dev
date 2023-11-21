@@ -42,7 +42,6 @@ branch_odoo=$(jq -r .branch_odoo config_file.json )
 # │   ├── gitinvitu
 # │   ├── gitoca
 # │   └── gitodoo
-# ├── oca
 # └── projects
 #    └── toto14
 
