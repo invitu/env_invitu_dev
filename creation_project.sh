@@ -10,9 +10,11 @@ branch_odoo=$(jq -r .branch_odoo config_file.json )
 #########
 # dependencies for Fedora/CentOS/RHEL
 # sudo yum install gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite \
-# sqlite-devel openssl-devel xz xz-devel libffi-devel
+# sqlite-devel openssl-devel xz xz-devel libffi-devel patch
 #######
 # install with :  curl https://pyenv.run | bash
+# and copy on your bashrc the following lines :
+#
 #######
 # combinaison de versions
 # ODOO 08 : python 2.7.9
@@ -29,10 +31,25 @@ branch_odoo=$(jq -r .branch_odoo config_file.json )
 #########
 # pour installer une version de python avec pyenv
 # /ex : pyenv install 3.5 
+# pour voir toutes les versions installer :
+# pyenv versions
+
+# Arborescence général 
+# ici, le nom du projet est toto14
+# laurent@fedora:~$ tree -L 2 invitu-devel/
+# invitu-devel/
+# ├── allrepos
+# │   ├── gitinvitu
+# │   ├── gitoca
+# │   └── gitodoo
+# ├── oca
+# └── projects
+#    └── toto14
+
 
 echo "val de la branch odoo $branch_odoo "
 
-Workspace="$HOME/Workspace/$name_project"
+Workspace="$HOME/invitu-devel/projects/$name_project"
 
 echo "Nom du projet : " $name_project
 
@@ -143,17 +160,21 @@ echo "on est dans le dossier $Workspace "
 # LINK 
 # on clone les depots selon leur branche en prenant le dernier commit
 # git clone --depth 1 --branch 15.0 https://github.com/odoo/odoo
+# pour prendre une autre branche 
+# git fetch --depth 1  https://github.com/odoo/odoo 16.0
+# git branch 16.0 FETCH_HEAD
+# git checkout 16.0
 #######
 # link odoo
-ln -sf ~/invitu-devel/odoo  odoo
+ln -sf ~/invitu-devel/allrepos/gitodoo/odoo  odoo
 # link oca :: choisir et cloner les depots voulues
 # ln -sf ~/invitu-devel/oca oca
 
 #  CHECKOUT and PULL
 ################
-# cd $Workspace/odoo
-# git checkout -b $branch_odoo  
-# git pull
+cd $Workspace/odoo
+git pull && git checkout $branch_odoo
+
 
 # cd $Workspace/oca
 # git checkout ...
