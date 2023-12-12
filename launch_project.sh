@@ -146,9 +146,9 @@ elif  [[ $module_link == git* ]]; then
         echo "UNLINK"
         unlink $projectpath/$module_name
     fi
-    ln -s $workspacerepos/$module_link/$module_name $projectpath
-    cd $projectpath/$module_name
+    cd $workspacerepos/$module_link
     git checkout $odoov && git pull
+    ln -s $workspacerepos/$module_link/$module_name $projectpath
 
 elif [[ $module_name == \#* ]]; then
     echo 'commentaire'
