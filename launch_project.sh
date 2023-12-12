@@ -89,7 +89,8 @@ fi
 #We check odoo version update
 odoov="$odooversion.0"
 echo "On se déplace dans le répertoire Odoo"
-cd $workspacerepos/gitodoo/odoo
+odoopath=$workspacerepos/gitodoo/odoo
+cd $odoopath
 echo "On effectue un git checkout et git pull de la version."
 git checkout $odoov && git pull
 
