@@ -130,7 +130,7 @@ if [[ $module_link == http* ]]; then
     module_url=${module_link/\/tree\//\/archive\/}
     echo $module_url
     echo "wget -O - $module_url.tar.gz | tar -xz --strip=1 $repo-$branch/$module_name"
-    wget -O - $module_url.tar.gz | tar -xz --strip=1 "$repo-$branch/$module_name"
+    wget -O - $module_url.tar.gz | tar -xvz -C $projectpath --strip=1 $repo-$branch/$module_name
 
 elif  [[ $module_link == git* ]]; then
     echo 'Module via repos : on supprime le dossier et on crée le lien symbolique'
