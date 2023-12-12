@@ -53,7 +53,7 @@ echo 'Nous vérifions si py env est installé.'
 if [ -z "$pyenvsystem"  ]
 then
     echo 'Nous installons votre pyenv pour Odoo 17.'
-    pyenv install $pyenv_version
+    pyenv install -v $pyenv_version
 else
     echo 'Pyenv pour Odoo 17 est déja installé, rien à faire.'
 fi
