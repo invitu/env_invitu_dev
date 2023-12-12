@@ -1,5 +1,15 @@
 #! /bin/bash
 ## Welcome message
+## Prerequisities
+##########
+## pyenv Installation
+#########
+# dependencies for Fedora/CentOS/RHEL
+# sudo dnf install git gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel patch
+#######
+# install with :  curl https://pyenv.run | bash
+# and copy on your bashrc the following lines :
+#
 echo "Bonjour, bienvenue dans l'outils de création d'environement odoo V17 automatique (by Coco@invitu)"
 
 ## We create the path of workspace if not exsist
