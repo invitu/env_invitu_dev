@@ -98,9 +98,9 @@ echo "On vérifie si le fichier modules.csv existe..."
 modulefile="$projectpath/modules.csv"
 if [ -f $modulefile ]
 then
-    echo 'Fichier présent.'
+    echo "Fichier présent."
 else
-    echo 'Vous devez créer le fichier modules.csv dans votre projet $projectpath pour poursuivre !'
+    echo "Vous devez créer le fichier modules.csv dans votre projet $projectpath pour poursuivre !"
     exit
 fi
 
