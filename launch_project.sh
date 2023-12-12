@@ -164,6 +164,6 @@ done < $modulefile
 #We provide cmd for odoo lauch
 echo ""
 echo "Pour lancer votre environement odoo vous devez saisir cette commande :"
-echo "${PYENV_ROOT}/versions/$pyenv_name/bin/python $odoopath/odoo-bin --limit-time-real=3600 --addons-path=$odoopath/addons,$projectpath -d $nameproject$odoov"
+echo "${PYENV_ROOT}/versions/$pyenv_name/bin/python $odoopath/odoo-bin --limit-time-real=3600 --addons-path=$odoopath/addons,$projectpath -d $nameproject$odooversion"
 echo "Si vous ne souhaitez pas de donnée de test, ajouter cet argument à la commande ci-dessus : --without-demo=all"
 echo "Votre projet Odoo est prêt !"
