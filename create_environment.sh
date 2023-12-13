@@ -64,7 +64,7 @@ if [ -d $workspaceodoo ]
 then
     echo 'Odoo est présent rien à faire'
 else
-    echo 'Odoo pas présent, nous effectuons un gitclone de la branche main 17'
+    echo 'Odoo pas présent, nous effectuons un gitclone du repo Odoo'
     mkdir -p $workspaceodoo && cd $workspaceodoo
-    git clone https://www.github.com/odoo/odoo --depth 1 --branch 17.0 --single-branch
+    git clone https://www.github.com/odoo/odoo
 fi
