@@ -124,6 +124,10 @@ if [[ $module_link == http* ]]; then
     if [[ -L "$projectpath/$module_name" ]]; then
         unlink $projectpath/$module_name
     fi
+    echo 'on supprime aussi le dossier pour permettre une MAJ propre'
+    if [[ -d "$projectpath/$module_name" ]]; then
+        rm -rf $projectpath/$module_name
+    fi
     repo="$(echo $module_link | cut -d/ -f5)"
     branch="$(echo $module_link | cut -d/ -f7)"
     echo $branch
