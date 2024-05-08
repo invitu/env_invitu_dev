@@ -48,17 +48,19 @@ if [[ $module_name == \#* ]]; then
 elif [[ $module_link == http* ]]; then
     echo 'Module via url : on fait un tar.gz direct'
     cd $projectpath
-    tar cvzf /tmp/$module_name.tar.gz $module_name
-    echo 'scp'
-    scp -P2222 /tmp/$module_name.tar.gz root@odoov$odooversion:.
+    mv $module_name "$module_name"_"$(date +%Y%m%d)"
+    tar cvzf /tmp/"$module_name"_v"$odooversion"_"$(date +%Y%m%d)".tar.gz "$module_name"_"$(date +%Y%m%d)"
+    mv "$module_name"_"$(date +%Y%m%d)" $module_name
+    echo "scp '$module_name'_v'$odooversion'_$(date +%Y%m%d).tar.gz"
+    scp -P2222 /tmp/"$module_name"_v"$odooversion"_"$(date +%Y%m%d)".tar.gz root@odoov$odooversion:.
 
 
 elif  [[ $module_link == git* ]]; then
     echo 'Module via repos : on fait un archive'
     cd $projectpath/$module_name
-    git archive --format tgz --prefix "$module_name"_"$(date +%Y%m%d)"/ --output /tmp/"$module_name"_v$odooversion_"$(date +%Y%m%d)".tar.gz $odooversion.0
-    echo 'scp'
-    scp -P2222 /tmp/"$module_name"_v$odooversion_"$(date +%Y%m%d)".tar.gz root@odoov$odooversion:.
+    git archive --format tgz --prefix "$module_name"_"$(date +%Y%m%d)"/ --output /tmp/"$module_name"_v"$odooversion"_"$(date +%Y%m%d)".tar.gz $odooversion.0
+    echo "scp '$module_name'_v'$odooversion'_$(date +%Y%m%d).tar.gz"
+    scp -P2222 /tmp/"$module_name"_v"$odooversion"_"$(date +%Y%m%d)".tar.gz root@odoov$odooversion:.
 
 else
     echo "Erreur dans le fichier de déclaration des modules $module_name $module_link"
