@@ -42,7 +42,10 @@ do
 echo "On détermine quels type de module est invoqué :"
 
 echo $module_link
-if [[ $module_link == http* ]]; then
+if [[ $module_name == \#* ]]; then
+    echo 'commentaire'
+
+elif [[ $module_link == http* ]]; then
     echo 'Module via url : on fait un tar.gz direct'
     cd $projectpath
     tar cvzf /tmp/$module_name.tar.gz $module_name
@@ -56,9 +59,6 @@ elif  [[ $module_link == git* ]]; then
     git archive --format tgz --prefix "$module_name"_"$(date +%Y%m%d)"/ --output /tmp/"$module_name"_v$odooversion_"$(date +%Y%m%d)".tar.gz $odooversion.0
     echo 'scp'
     scp -P2222 /tmp/"$module_name"_v$odooversion_"$(date +%Y%m%d)".tar.gz root@odoov$odooversion:.
-
-elif [[ $module_name == \#* ]]; then
-    echo 'commentaire'
 
 else
     echo "Erreur dans le fichier de déclaration des modules $module_name $module_link"

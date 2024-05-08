@@ -119,7 +119,10 @@ do
 echo "On détermine quels type de module est invoqué :"
 
 echo $module_link
-if [[ $module_link == http* ]]; then
+if [[ $module_name == \#* ]]; then
+    echo 'commentaire'
+
+elif [[ $module_link == http* ]]; then
     echo 'Module via url : on supprime le lien symbolique et on recupere le module'
     if [[ -L "$projectpath/$module_name" ]]; then
         unlink $projectpath/$module_name
@@ -153,9 +156,6 @@ elif  [[ $module_link == git* ]]; then
     cd $workspacerepos/$module_link
     git checkout $odoov && git pull
     ln -s $workspacerepos/$module_link/$module_name $projectpath
-
-elif [[ $module_name == \#* ]]; then
-    echo 'commentaire'
 
 else
     echo "Erreur dans le fichier de déclaration des modules $module_name $module_link"
