@@ -12,6 +12,7 @@ do
     echo $i
     if [[ $i == *"invitu_"$date".tar.gz" ]]; then
         module=${i%_v17_invitu_"$date"\.tar\.gz}
+        echo "INVITU"
         echo $module
         folder="$module"_"$date"
         echo $folder
@@ -21,8 +22,21 @@ do
         /bin/ln -s $folder $module
         cd $workspace/other-addons
         /bin/ln -s ../invitu-addons/$module
+    elif [[ $i == "theme_"*$date".tar.gz" ]]; then
+        module=${i%_v17_"$date"\.tar\.gz}
+        echo "THEME"
+        echo $module
+        folder="$module"_"$date"
+        echo $folder
+        cd $workspace/themes_sources
+        /bin/tar xvzf /root/$i 
+        /bin/rm $module -f
+        /bin/ln -s $folder $module
+        cd $workspace/themes
+        /bin/ln -s ../themes_sources/$module
     else
         module=${i%_v17_special_"$date"\.tar\.gz}
+        echo "SPECIAL"
         echo $module
         folder="$module"_"$date"
         echo $folder
