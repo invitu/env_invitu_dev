@@ -33,9 +33,9 @@ fi
 # ODOO 12 : python 3.5
 # ODOO 13 : python 3.6
 # ODOO 14 : python 3.8
-# ODOO 15 : python 3.8
-# ODOO 16 : python 3.10
-# ODOO 17 : python 3.10
+# ODOO 15 : python 3.12
+# ODOO 16 : python 3.12
+# ODOO 17 : python 3.12
 #########
 #We check odooversion with pyenv_version
 
@@ -52,13 +52,13 @@ case $odooversion in
     pyenv_version="3.6"
     pyenvsystem=$(pyenv versions | grep -m 1 3.6)
     ;;
-    "14" | "15")
+    "14")
     pyenv_version="3.8"
     pyenvsystem=$(pyenv versions | grep -m 1 3.8)
     ;;
-    "16" | "17")
-    pyenv_version="3.10"
-    pyenvsystem=$(pyenv versions | grep -m 1 3.10)
+    "15" | "16" | "17")
+    pyenv_version="3.12"
+    pyenvsystem=$(pyenv versions | grep -m 1 3.12)
     ;;
 esac
 
@@ -76,7 +76,7 @@ fi
 
 ## We create environement
 pyenv_name=odoo$odooversion
-pyenv_create=$(pyenv versions | grep -m 1 $pyenv_name)
+pyenv_create=$(pyenv versions | grep -m 1 ^\ \ $pyenv_name)
 
 if [ -z "$pyenv_create"  ]
 then

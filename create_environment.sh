@@ -43,8 +43,8 @@ else
 fi
 
 #We define python environement match for Odoo 17
-pyenv_version="3.10"
-pyenvsystem=$(pyenv versions | grep -m 1 3.10)
+pyenv_version="3.12"
+pyenvsystem=$(pyenv versions | grep -m 1 3.12)
 
 ## We check or install python environement for odoo version 17
 
