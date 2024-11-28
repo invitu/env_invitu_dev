@@ -36,6 +36,7 @@ fi
 # ODOO 15 : python 3.12
 # ODOO 16 : python 3.12
 # ODOO 17 : python 3.12
+# ODOO 18 : python 3.12
 #########
 #We check odooversion with pyenv_version
 
@@ -56,7 +57,7 @@ case $odooversion in
     pyenv_version="3.8"
     pyenvsystem=$(pyenv versions | grep -m 1 3.8)
     ;;
-    "15" | "16" | "17")
+    "15" | "16" | "17" | "18")
     pyenv_version="3.12"
     pyenvsystem=$(pyenv versions | grep -m 1 3.12)
     ;;
